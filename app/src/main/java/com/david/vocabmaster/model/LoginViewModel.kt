@@ -22,4 +22,16 @@ class LoginViewModel : ViewModel() {
     fun onPasswordChange(value: String) {
         _password.value = value
     }
+
+    fun validateLogin(): Boolean {
+        if (!email.value.contains("@")) {
+            _error.value = "El email no es válido"
+            return false
+        }
+        if (password.value.length < 6) {
+            _error.value = "La contraseña debe tener al menos 6 caracteres"
+            return false
+        }
+        return true
+    }
 }
