@@ -43,6 +43,13 @@ fun LoginScreen(navController: NavController, viewModel: LoginViewModel = LoginV
             label = { Text("Email") },
             singleLine = true
         )
+        OutlinedTextField(
+            value = password,
+            onValueChange = viewModel::onPasswordChange,
+            label = { Text("Contraseña") },
+            singleLine = true
+        )
+
         if (error != null) {
             Spacer(modifier = Modifier.height(8.dp))
             Text(error!!, color = MaterialTheme.colorScheme.error)
