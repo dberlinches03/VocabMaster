@@ -10,4 +10,8 @@ class LoginViewModel : ViewModel() {
 
     private val _password = MutableStateFlow("")
     val password: StateFlow<String> = _password
+
+    private val _error = MutableStateFlow<String?>(null)
+    val error: StateFlow<String?> = _error
+
 }
