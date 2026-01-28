@@ -20,7 +20,7 @@ import com.david.vocabmaster.AppScaffold
 import com.david.vocabmaster.model.HomeViewModel
 
 @Composable
-fun HomeScreen(navController: NavController, viewModel: HomeViewModel = HomeViewModel()) {
+fun HomeScreen(navController: NavController, viewModel: HomeViewModel) {
     val word = viewModel.currentWord.collectAsState().value
     AppScaffold(navController) {
         if (word == null) {
@@ -42,6 +42,9 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = HomeView
 
             Button(onClick = {viewModel.loadNewWord()}) {
                 Text("Nueva palabra")
+            }
+            Button(onClick = { viewModel.saveCurrentWord() }) {
+                Text("Marcar como aprendida")
             }
         }
     }
