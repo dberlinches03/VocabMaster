@@ -14,4 +14,12 @@ class LoginViewModel : ViewModel() {
     private val _error = MutableStateFlow<String?>(null)
     val error: StateFlow<String?> = _error
 
+
+    fun onEmailChange(value: String) {
+        _email.value = value
+    }
+
+    fun onPasswordChange(value: String) {
+        _password.value = value
+    }
 }
