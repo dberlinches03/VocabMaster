@@ -20,4 +20,24 @@ class RegisterViewModel : ViewModel() {
     fun onPasswordChange(v: String) { _password.value = v }
     fun onConfirmChange(v: String) { _confirmPassword.value = v }
 
+    fun validate(): Boolean {
+        if (name.value.isEmpty()) {
+            _error.value = "El nombre no puede estar vacío"
+            return false
+        }
+        if (!email.value.contains("@")) {
+            _error.value = "El email no es válido"
+            return false
+        }
+        if (password.value.length < 6) {
+            _error.value = "La contraseña debe tener al menos 6 caracteres"
+            return false
+        }
+        if (password.value != confirmPassword.value) {
+            _error.value = "Las contraseñas no coinciden"
+            return false
+        }
+        _error.value = null
+        return true
+    }
 }
