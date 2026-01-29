@@ -17,13 +17,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.david.vocabmaster.model.LoginViewModel
 import com.david.vocabmaster.navigation.NavRoute
 
 @Composable
-fun LoginScreen(navController: NavController, viewModel: LoginViewModel = LoginViewModel()) {
+fun LoginScreen(navController: NavController) {
 
+    val viewModel: LoginViewModel = viewModel()
     val email by viewModel.email.collectAsState()
     val password by viewModel.password.collectAsState()
     val error by viewModel.error.collectAsState()

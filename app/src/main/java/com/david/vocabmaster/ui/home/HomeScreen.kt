@@ -15,12 +15,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.david.vocabmaster.AppScaffold
 import com.david.vocabmaster.model.HomeViewModel
 
 @Composable
-fun HomeScreen(navController: NavController, viewModel: HomeViewModel = HomeViewModel()) {
+fun HomeScreen(navController: NavController) {
+    val viewModel: HomeViewModel = viewModel()
     val word = viewModel.currentWord.collectAsState().value
     AppScaffold(navController) {
         if (word == null) {
@@ -40,8 +42,16 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = HomeView
             )
             Spacer(modifier = Modifier.height(16.dp))
 
+            Text(
+                text = word.definition,
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Spacer(modifier = Modifier.height(32.dp))
             Button(onClick = {viewModel.loadNewWord()}) {
                 Text("Nueva palabra")
+            }
+            Button(onClick = { viewModel.saveCurrentWord() }) {
+                Text("Marcar como aprendida")
             }
         }
     }

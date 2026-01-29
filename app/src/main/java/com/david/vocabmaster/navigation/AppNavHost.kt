@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
+import com.david.vocabmaster.model.HomeViewModel
+import com.david.vocabmaster.ui.game.GameScreen
 import com.david.vocabmaster.ui.login.LoginScreen
 import com.david.vocabmaster.ui.register.RegisterScreen
 import com.david.vocabmaster.ui.home.HomeScreen
@@ -34,6 +36,9 @@ fun AppNavHost(navController: NavHostController) {
         }
         composable(NavRoute.Stats.route) {
             StatsScreen(navController)
+        }
+        composable(NavRoute.Game.route) {
+            GameScreen(navController)
         }
     }
 }

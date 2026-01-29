@@ -22,10 +22,13 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.david.vocabmaster.data.datastore.UserPreferences
 import com.david.vocabmaster.navigation.AppNavHost
 import com.david.vocabmaster.navigation.NavRoute
 import com.david.vocabmaster.ui.theme.VocabMasterTheme
@@ -37,7 +40,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            VocabMasterTheme {
+            val prefs = UserPreferences(applicationContext)
+            val darkMode by prefs.darkModeFlow.collectAsState(initial = false)
+
+            VocabMasterTheme(darkTheme = darkMode) {
                 Scaffold(
                     containerColor = MaterialTheme.colorScheme.background
                 ) {
@@ -75,6 +81,9 @@ fun AppScaffold(
                 }
                 TextButton(onClick = { navController.navigate(NavRoute.Login.route) }) {
                     Text("Cerrar sesión")
+                }
+                TextButton(onClick = {navController.navigate(NavRoute.Game.route)}) {
+                    Text("Jugar")
                 }
             }
         }
