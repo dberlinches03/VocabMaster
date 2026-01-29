@@ -5,13 +5,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.david.vocabmaster.model.RegisterViewModel
 import com.david.vocabmaster.navigation.NavRoute
 
 @Composable
-fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = RegisterViewModel()) {
+fun RegisterScreen(navController: NavController) {
 
+    val viewModel: RegisterViewModel = viewModel()
     val name by viewModel.name.collectAsState()
     val email by viewModel.email.collectAsState()
     val password by viewModel.password.collectAsState()
