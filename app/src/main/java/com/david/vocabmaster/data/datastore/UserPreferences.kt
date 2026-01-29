@@ -33,6 +33,13 @@ class UserPreferences(private val context: Context) {
     val streakFlow: Flow<Int> = context.dataStore.data
         .map { prefs -> prefs[STREAK] ?: 0}
 
+    suspend fun updateAccessDate(today: Long, newStreak: Int) {
+        context.dataStore.edit { prefs ->
+            prefs[LAST_ACCESS] = today
+            prefs[STREAK] = newStreak
+        }
+    }
+
     suspend fun setDarkMode(enabled: Boolean) {
         context.dataStore.edit { prefs ->
             prefs[DARK_MODE] = enabled
