@@ -42,6 +42,11 @@ fun HomeScreen(navController: NavController) {
             )
             Spacer(modifier = Modifier.height(16.dp))
 
+            Text(
+                text = word.definition,
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Spacer(modifier = Modifier.height(32.dp))
             Button(onClick = {viewModel.loadNewWord()}) {
                 Text("Nueva palabra")
             }
