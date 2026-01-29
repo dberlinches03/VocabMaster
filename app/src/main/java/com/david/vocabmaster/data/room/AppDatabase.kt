@@ -6,10 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [LearnedWord::class],
-    version = 1,
-    exportSchema = false
-)
+    entities = [LearnedWord::class], version = 1)
 
 
 abstract class AppDatabase : RoomDatabase() {

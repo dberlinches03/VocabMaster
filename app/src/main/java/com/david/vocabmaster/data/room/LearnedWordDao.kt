@@ -1,10 +1,12 @@
 package com.david.vocabmaster.data.room
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface LearnedWordDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -17,5 +19,5 @@ interface LearnedWordDao {
     fun count(): Flow<Int>
 
     @Query("SELECT * FROM learned_words WHERE word = :word LIMIT 1")
-    suspend fun getbyWord(word: String): LearnedWord?
+    suspend fun getByWord(word: String): LearnedWord?
 }

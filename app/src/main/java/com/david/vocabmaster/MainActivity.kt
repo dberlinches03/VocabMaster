@@ -82,6 +82,9 @@ fun AppScaffold(
                 TextButton(onClick = { navController.navigate(NavRoute.Login.route) }) {
                     Text("Cerrar sesión")
                 }
+                TextButton(onClick = {navController.navigate(NavRoute.Game.route)}) {
+                    Text("Jugar")
+                }
             }
         }
     ) {

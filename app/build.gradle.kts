@@ -40,7 +40,7 @@ android {
 }
 
 dependencies {
-
+    val room_version = "2.6.1"
     implementation("androidx.datastore:datastore-preferences:1.2.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -54,6 +54,8 @@ dependencies {
     implementation(libs.compose.material3)
     implementation(libs.androidx.room.common.jvm)
     implementation(libs.androidx.room.ktx)
+    implementation("androidx.room:room-runtime:${room_version}")
+    implementation("androidx.room:room-ktx:${room_version}")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

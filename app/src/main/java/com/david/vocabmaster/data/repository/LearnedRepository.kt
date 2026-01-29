@@ -17,6 +17,6 @@ class LearnedRepository (context: Context) {
     }
 
     suspend fun exists(word: String): Boolean {
-        return dao.getbyWord(word) != null
+        return dao.getByWord(word) != null
     }
 }
