@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.NavHostController
+import com.david.vocabmaster.model.HomeViewModel
 import com.david.vocabmaster.ui.login.LoginScreen
 import com.david.vocabmaster.ui.register.RegisterScreen
 import com.david.vocabmaster.ui.home.HomeScreen
@@ -12,7 +13,7 @@ import com.david.vocabmaster.ui.learned.LearnedWordsScreen
 import com.david.vocabmaster.ui.stats.StatsScreen
 
 @Composable
-fun AppNavHost(navController: NavHostController) {
+fun AppNavHost(navController: NavHostController, viewModel: HomeViewModel) {
     NavHost(
         navController = navController,
         startDestination = NavRoute.Login.route
@@ -24,7 +25,7 @@ fun AppNavHost(navController: NavHostController) {
             RegisterScreen(navController)
         }
         composable(NavRoute.Home.route) {
-            HomeScreen(navController)
+            HomeScreen(navController, viewModel)
         }
         composable(NavRoute.Settings.route) {
             SettingsScreen(navController)
